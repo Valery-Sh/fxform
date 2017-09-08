@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.apisupport.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
+            <code-name-base>org.vns.javafx.dock</code-name-base>
+            <suite-component/>
+            <module-dependencies/>
+            <public-packages>
+                <package>org.vns.javafx.dock</package>
+                <package>org.vns.javafx.dock.api</package>
+                <package>org.vns.javafx.dock.api.demo</package>
+                <package>org.vns.javafx.dock.api.demo.controls</package>
+                <package>org.vns.javafx.dock.api.dragging</package>
+                <package>org.vns.javafx.dock.api.dragging.view</package>
+                <package>org.vns.javafx.dock.api.editor</package>
+                <package>org.vns.javafx.dock.api.editor.bean</package>
+                <package>org.vns.javafx.dock.api.event</package>
+                <package>org.vns.javafx.dock.api.indicator</package>
+                <package>org.vns.javafx.dock.api.properties</package>
+                <package>org.vns.javafx.dock.api.save</package>
+                <package>org.vns.javafx.dock.api.save.builder</package>
+                <package>org.vns.javafx.dock.api.util</package>
+                <package>org.vns.javafx.dock.api.util.prefs</package>
+                <package>org.vns.javafx.dock.demo</package>
+                <package>org.vns.javafx.dock.incubator</package>
+                <package>org.vns.javafx.dock.util</package>
+            </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/FXDocking-1.0-SNAPSHOT.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/FXDocking-1.0-SNAPSHOT.jar</binary-origin>
+            </class-path-extension>
+        </data>
+    </configuration>
+</project>
