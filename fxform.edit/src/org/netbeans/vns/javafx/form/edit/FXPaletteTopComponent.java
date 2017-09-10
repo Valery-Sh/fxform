@@ -16,7 +16,7 @@ import org.openide.util.NbBundle.Messages;
  * Top component which displays something.
  */
 @ConvertAsProperties(
-        dtd = "-//org.netbeans.vns.javafx.demo//FXPalette//EN",
+        dtd = "-//org.netbeans.vns.javafx.form.edit//FXPalette//EN",
         autostore = false
 )
 @TopComponent.Description(
@@ -25,7 +25,7 @@ import org.openide.util.NbBundle.Messages;
         persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
 @TopComponent.Registration(mode = "commonpalette", openAtStartup = false)
-@ActionID(category = "Window", id = "org.netbeans.vns.javafx.demo.FXPaletteTopComponent")
+@ActionID(category = "Window", id = "org.netbeans.vns.javafx.form.edit.FXPaletteTopComponent")
 @ActionReference(path = "Menu/Window" /*, position = 333 */)
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_FXPaletteAction",

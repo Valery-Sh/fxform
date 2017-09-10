@@ -10,6 +10,7 @@ package org.netbeans.vns.javafx.form.edit;
  * @author Valery
  */
 import javax.swing.Action;
+import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.api.editor.guards.GuardedSectionManager;
 import org.netbeans.api.java.loaders.JavaDataSupport;
 import org.openide.actions.EditAction;
@@ -29,7 +30,8 @@ public class FxFormDataNode extends FilterNode {
     //  static final long serialVersionUID = 1795549004166402392L;
 
     /** Icon base for form data objects. */
-    private static final String FORM_ICON_BASE = "org/netbeans/vns/javafx/demo/icon.png"; // NOI18N
+    @StaticResource
+    private static final String FORM_ICON_BASE = "org/netbeans/vns/javafx/form/edit/resources/icon.png"; // NOI18N
 
     /** Constructs a new FormDataObject for specified primary file
      * 

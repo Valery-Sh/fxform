@@ -67,7 +67,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="org.netbeans.vns.javafx.demo.JFXPalettePanel" name="fxPanel">
+        <Container class="org.netbeans.vns.javafx.form.edit.JFXPalettePanel" name="fxPanel">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
             <Property name="useNullLayout" type="boolean" value="true"/>

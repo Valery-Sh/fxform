@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Loaders">
+        <folder name="text">
+            <folder name="x-java">
+                <folder name="Factories">
+                    <file name="org-netbeans-vns-javafx-form-edit-FxFormDataLoader.instance">
+                         <attr name="position" intvalue="100"/>
+                    </file>
+                </folder>
+            </folder>
+            <folder name="x-fxform">
+                <folder name="Factories">
+                    <file name="org-netbeans-vns-javafx-form-edit-FxFormDataLoader.instance">
+                        <attr name="position" intvalue="100"/>
+                    </file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>   
+    <folder name="org-netbeans-vns-javafx-form-edit">
+        <!-- form class loader type registration -->
+        <folder name="classloader">
+            <folder name="system">
+                <file name="SystemClasses.txt" url="SystemClasses.txt"/>
+            </folder>
+            <folder name="system_with_project"/>
+        </folder>
+    </folder>
+         
+</filesystem>

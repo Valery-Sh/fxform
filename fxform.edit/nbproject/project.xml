@@ -710,7 +710,11 @@
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>org.netbeans.vns.javafx.form.edit</package>
+                <package>org.netbeans.vns.javafx.form.edit.design.code</package>
+                <package>org.netbeans.vns.javafx.form.edit.design.code.util</package>
+            </public-packages>
         </data>
     </configuration>
 </project>

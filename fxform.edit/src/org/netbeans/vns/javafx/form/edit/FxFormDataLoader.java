@@ -30,7 +30,6 @@ public class FxFormDataLoader extends MultiFileLoader {
     static final long serialVersionUID =7359146057404524013L;
     /** Constructs a new FormDataLoader */
     public FxFormDataLoader() {
-        //super("org.netbeans.vns.javafx.demo.FxFormDataObject");
         super(FxFormDataObject.class.getName());
         //Util.out("FxFormDataLoader.CONSTR");
     }
