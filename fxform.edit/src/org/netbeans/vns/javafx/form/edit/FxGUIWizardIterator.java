@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.StringTokenizer;
 import javax.swing.JComponent;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -24,7 +23,6 @@ import org.netbeans.spi.java.project.support.ui.templates.JavaTemplates;
 import org.netbeans.spi.project.ui.templates.support.Templates;
 import org.openide.WizardDescriptor;
 import org.openide.filesystems.FileObject;
-import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataFolder;
 import org.openide.loaders.DataObject;
 import org.openide.util.Exceptions;
@@ -32,7 +30,6 @@ import org.openide.util.NbBundle.Messages;
 
 // TODO define position attribute
 @TemplateRegistrations({
-    //@TemplateRegistration(folder = "JavaFx GUI Form", content = {"Main.java.template", "MainLayout.java.template","Main.fxform.template"}, displayName = "#FXForm.main", iconBase = "org/netbeans/vns/javafx/demo/icon.png", description = "Main.html", scriptEngine = "freemarker")
     @TemplateRegistration(folder = "JavaFX GUI Form", 
             content = {"resources/JavaFXApplication.java.template", "resources/JavaFXApplicationLayout.java.template", "resources/JavaFXApplication.fxform.template"}, 
             displayName = "#FXForm.main", 
@@ -109,7 +106,10 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         }
         return panels;
     }
-
+    public void ttt() {
+        
+        //freemarker.template.Configuration.Configuration cfg;// = new Configuration();
+    }
     private static SourceGroup[] checkNotNull(SourceGroup[] groups, Sources sources) {
         List<SourceGroup> sourceGroups = new ArrayList<SourceGroup>();
         for (SourceGroup sourceGroup : groups) {
@@ -128,12 +128,9 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         // TODO return set of FileObject (or DataObject) you have created
         FileObject dir = Templates.getTargetFolder(wiz);
         DataFolder dirDO = DataFolder.findFolder(dir);
-//        Util.out("Dir: " + dir);
         String targetName = Templates.getTargetName(wiz);
-//        Util.out("targetName: " + targetName);
-
+        
         FileObject primaryTemplate = Templates.getTemplate(wiz);
-//         Util.out("primaryTemplate: " + primaryTemplate);
         FileObject primaryFile = null;
         FileObject layoutTemplate = getLayoutTemplate(primaryTemplate); 
         FileObject layoutFile = null;
@@ -141,12 +138,11 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         FileObject fxformFile = null;
         
         DataObject primaryTemplateDO = DataObject.find(primaryTemplate);
-//        Util.out("primaryTemplateDO: " + primaryTemplateDO);
-//        Util.out("fxformTemplate: " + fxformTemplate);
+
         DataObject layoutTemplateDO = DataObject.find(layoutTemplate);
         layoutTemplate.setAttribute("javax.script.ScriptEngine", primaryTemplate.getAttribute("javax.script.ScriptEngine"));  
 
-        //DataObject fxformTemplateDO = DataObject.find(fxformTemplate);
+        DataObject fxformTemplateDO = DataObject.find(fxformTemplate);
         fxformTemplate.setAttribute("javax.script.ScriptEngine", primaryTemplate.getAttribute("javax.script.ScriptEngine"));          
         
         DataObject primaryDO = primaryTemplateDO.createFromTemplate(dirDO, targetName);
@@ -172,10 +168,8 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
 
     @Override
     public void initialize(WizardDescriptor wizard) {
-//        Util.out("INITIALIZE: wiz=" + wizard);
-
         this.wiz = wizard;
-        getPanels();
+//        getPanels();
     }
 
     @Override
@@ -185,15 +179,6 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
 
     @Override
     public WizardDescriptor.Panel<WizardDescriptor> current() {
-/*        wiz.getProperties().forEach((k, v) -> {
-            Util.out("k=" + k + "; v=" + v);
-        });
-
-        String[] a = (String[]) wiz.getProperty("WizardPanel_contentData");
-        for (String s : a) {
-            Util.out("CONTENT: " + s);
-        }
-*/        
         return getPanels().get(index);
     }
 
@@ -217,10 +202,6 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-/*        wiz.getProperties().forEach((k, v) -> {
-            Util.out("1 k=" + k + "; v=" + v);
-        });
-*/
         index++;
     }
 
@@ -244,13 +225,9 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         return null;
     }
     private FileObject getFxFormTemplate(FileObject fileObject) {
-        //FileObject fileObject = null;
         for (int i = 0; i < fileObject.getParent().getChildren().length; i++) {
             FileObject obj = fileObject.getParent().getChildren()[i];
-//            Util.out("getFxFormTemplate: name=" + obj.getName() + ": nameEx=" + obj.getNameExt());
-            //if (obj.getName().equals(fileObject.getName() + "Layout")) {
             if (obj.getName().equals(fileObject.getName()) && "fxform".equals(obj.getExt())) {
-//                Util.out("getFxFormTemplate " + obj);
                 return obj;
             }
         }
@@ -258,15 +235,6 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
         return null;
     }
     
-    // If nothing unusual changes in the middle of the wizard, simply:
-/*    @Override
-    public void addChangeListener(ChangeListener l) {
-    }
-
-    @Override
-    public void removeChangeListener(ChangeListener l) {
-    }
-     */
     // If something changes dynamically (besides moving between panels), e.g.
     // the number of panels changes in response to user input, then use
     // ChangeSupport to implement add/removeChangeListener and call fireChange
@@ -315,66 +283,4 @@ public final class FxGUIWizardIterator implements WizardDescriptor.Instantiating
             l.stateChanged(ev);
         }
     }
-/*
-    protected FileObject getTemplateFolder() {
-        FileObject fo = FileUtil.getConfigFile("Templates"); // NOI18N
-
-        if (fo != null && fo.isFolder()) {
-
-            return fo;
-
-        }
-        return null;
-    }
-
-    protected FileObject getTemplateByNameAndFolder(String name, String folder) {
-        FileObject fo = FileUtil.getConfigFile("Templates"); // NOI18N
-
-        FileObject tmplFolder = getTemplateFolder(fo, folder);
-
-        if (null != tmplFolder && tmplFolder.isFolder()) {
-            return tmplFolder.getFileObject(name);
-        } else {
-            return null;
-        }
-
-    }
-
-    protected FileObject getTemplateFolder(FileObject base, String folder) {
-        if (null == base) {
-            return null;
-        }
-
-        if (!base.isFolder()) {
-            return null;
-        }
-
-        if (null == folder || folder.trim().length() == 0) {
-            return null;
-        }
-
-        FileObject[] templates = base.getChildren();
-
-        if (folder.contains("/")) {
-            // Folder name contains subfolders
-
-            StringTokenizer st = new StringTokenizer(folder, "/");
-
-            String nextSubfolderName = st.nextToken();
-
-            String remainingFolderName = folder.substring(nextSubfolderName.length() + 1);
-
-            FileObject subfolder = base.getFileObject(nextSubfolderName);
-
-            return getTemplateFolder(subfolder, remainingFolderName);
-
-        } else {
-
-            FileObject fo = base.getFileObject(folder);
-
-            return fo;
-        }
-
-    }
-*/
 }//class

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.netbeans.vns.javafx.form.edit;
 
 import com.sun.source.tree.ClassTree;
@@ -113,11 +108,7 @@ public class FxFormRefactoring {
         public TreePathHandle getTreePathHandle() {
             return treePathHandle;
         }
-/*
-        public void setTreePathHandle(TreePathHandle treePathHandle) {
-            this.treePathHandle = treePathHandle;
-        }
-*/
+
         public MemberVisitor(String member, boolean findUsages) {
             this.member = member;
             this.findUsages = findUsages;
