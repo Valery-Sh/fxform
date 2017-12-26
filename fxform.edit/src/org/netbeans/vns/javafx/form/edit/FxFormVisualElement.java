@@ -67,15 +67,15 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
         assert formDataObject != null;
         //FileObject dfo = formDataObject.getPrimaryFile().getParent().getFileObject("Sanple01_design.java");
         File f = new File("D:\\JavaFX-Tests\\JavaApplication5\\src\\javaapplication5\\Sanple01_design.java");
-        
+
         FileObject dfo = FileUtil.toFileObject(f);
         Project p = FileOwnerQuery.getOwner(dfo);
         Util.out("PROJECT LOOKUP ===============================");
-        for ( Object o : p.getLookup().lookupAll(Object.class )) {
+        for (Object o : p.getLookup().lookupAll(Object.class)) {
             Util.out("   --- obj = " + o);
         }
         Util.out("END PROJECT LOOKUP ===============================");
-        
+
         Util.out("FxFormVisualElement:constr dfo =  " + dfo);
         try {
             DataObject dob = DataObject.find(dfo);
@@ -231,12 +231,12 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
                 } catch (DataObjectNotFoundException ex) {
                     Exceptions.printStackTrace(ex);
                 }
-                
+
                 //FxCodeGenerator.modifyDesignerTree(null, des.getDataObject().getPrimaryFile().getParent().getFileObject("Sanple01_design.java"), list);
                 FxCodeGenerator.inserStartTempCode(des.getDocument(), dfo);
                 try {
 
-                    des.saveDocument();
+                    //des.saveDocument();
                     //FileObject fo = des.getDataObject().getPrimaryFile().getParent();
                     //des.saveAs(fo, des.getDataObject().getPrimaryFile().getName() + ".fxjava");
                 } catch (Exception ex) {
@@ -286,7 +286,7 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
                     Exceptions.printStackTrace(ex);
                 }
                 //FxCodeGenerator.modifyDesignerTree(null, des.getDataObject().getPrimaryFile().getParent().getFileObject("Sanple01_design.java"), list);
-                FxCodeGenerator.modifyDesignerTree(null, dfo, list);                
+                FxCodeGenerator.modifyDesignerTree(null, dfo, list);
                 try {
 
                     //des.saveDocument();
@@ -312,7 +312,7 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
             //          });
         }
     }
-    
+
     protected boolean isCompileOnSaveFinished(FileObject fo) {
         boolean retval = false;
         try {
@@ -369,4 +369,3 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
     }
 
 }
-

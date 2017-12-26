@@ -158,7 +158,7 @@ public class FxCodeGenerator {
         return retval;
     }
 
-    public  static void inserStartTempCode(Document doc, FileObject fo) {
+    public static void inserStartTempCode(Document doc, FileObject fo) {
         JavaSource javaSource = JavaSource.forDocument(doc);
 
         CancellableTask task = new CancellableTask<WorkingCopy>() {
@@ -168,9 +168,8 @@ public class FxCodeGenerator {
                 workingCopy.toPhase(JavaSource.Phase.RESOLVED);
                 CompilationUnitTree cut = workingCopy.getCompilationUnit();
                 TreeMaker make = workingCopy.getTreeMaker();
-                
-                //workingCopy.getTreeUtilities().ElementUtilities().;
 
+                //workingCopy.getTreeUtilities().ElementUtilities().;
                 for (Tree typeDecl : cut.getTypeDecls()) {
 
                     if (Tree.Kind.CLASS == typeDecl.getKind()) {
@@ -199,14 +198,13 @@ public class FxCodeGenerator {
                         //Comment comment = Comment.create(Comment.Style.LINE, -2, -2,
                         //        -2, "TestCreator.variantMethods.defaultComment");
                         //make.addComment(s, comment, true);
-
                         //Util.out("+++ st = " + s);
                         //Util.out("   ---  kind = " + s.getKind());
                         //Util.out("   ---  class = " + s.getClass().getName());
                         //});
                         Tree ifTree = getStartTempIfTree(mt);
                         if (ifTree != null) {
-                                                        Util.out("### ******* NOT NULL ");
+                            Util.out("### ******* NOT NULL ");
 
                             List<Comment> coms = workingCopy.getTreeUtilities().getComments(ifTree, true);
                             coms.forEach(c -> {
@@ -217,14 +215,14 @@ public class FxCodeGenerator {
                                 Util.out("----------------------------------------");
 
                             });
-                            
+
                         }
                         if (getStartTempIfTree(mt) == null) {
                             BlockTree constrBody = mt.getBody();
                             MethodInvocationTree mit = make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.Identifier("initComponents"), Collections.<ExpressionTree>emptyList());
                             ExpressionStatementTree est = make.ExpressionStatement(mit);
                             constrBody.getStatements().forEach(s -> {
-                                
+
                                 List<Comment> coms = workingCopy.getTreeUtilities().getComments(s, false);
                                 coms.forEach(c -> {
                                     Util.out("**** statement = " + s);

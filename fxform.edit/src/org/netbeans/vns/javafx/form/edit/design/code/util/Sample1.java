@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.netbeans.vns.javafx.demo.design.code.util;
+package org.netbeans.vns.javafx.form.edit.design.code.util;
 
 import javafx.scene.control.Button;
 
