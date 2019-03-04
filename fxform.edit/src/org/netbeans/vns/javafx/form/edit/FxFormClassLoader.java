@@ -7,18 +7,18 @@ import java.util.Enumeration;
 import org.openide.ErrorManager;
 
 /**
- * A special classloader capable to combine system classpath (IDE modules) and
- * user project classpath into one. Classes loaded by this classloader can link
+ * A special {@literal classloader} capable to combine system {@literal classpath} (IDE modules) and
+ * user project {@literal  classpath} into one. Classes loaded by this {@literal  classloader} can link
  * with module classes running in the IDE and access resources on project
- * classpath at the same time.
+ * {@literal classpath} at the same time.
  *
  * @author Tomas Pavek
  */
 
 final class FxFormClassLoader extends ClassLoader {
 
-    private ClassLoader systemClassLoader;
-    private ClassLoader projectClassLoader;
+    private final ClassLoader systemClassLoader;
+    private final ClassLoader projectClassLoader;
     private ClassLoader projectClassReloader;
 
     FxFormClassLoader(ClassLoader projectClassLoader) {

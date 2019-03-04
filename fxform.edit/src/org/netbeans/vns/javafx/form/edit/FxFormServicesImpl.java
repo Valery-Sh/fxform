@@ -76,10 +76,9 @@ public class FxFormServicesImpl implements FxFormServices {
   
     @Override
     public Node createFormDataNode(FxFormDataObject formDataObject) {
-        FxFormDataNode node = new FxFormDataNode(formDataObject);
+        return new FxFormDataNode(formDataObject);
         //Util.out("=== FxFormServices.createFormDataNode fo=" + formDataObject);
-        
-        return node;
+        //return node;
     }
 
 

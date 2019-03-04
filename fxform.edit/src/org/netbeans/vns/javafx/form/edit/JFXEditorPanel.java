@@ -27,6 +27,7 @@ import org.vns.javafx.dock.DockBorderPane;
 import org.vns.javafx.dock.DockNode;
 import org.vns.javafx.dock.DockSideBar;
 import org.vns.javafx.dock.api.DockRegistry;
+import org.vns.javafx.dock.api.Dockable;
 
 /**
  *
@@ -69,7 +70,7 @@ public class JFXEditorPanel extends JFXPanel {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                //Util.out("FxFormVisualElement Platform.runLater");
+                Util.out("JFXEditorPanel Platform.runLater");
                 initFX();
 
                 Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
@@ -92,7 +93,7 @@ public class JFXEditorPanel extends JFXPanel {
         Util.out(" --- initFX");
         scene = createScene();
         setScene(scene);
-        DockRegistry.register(scene.getWindow());
+        //DockRegistry.register(scene.getWindow());
 
     }
 
@@ -123,7 +124,7 @@ public class JFXEditorPanel extends JFXPanel {
         mainBorderPane.setCenter(formNode);
 
         DockSideBar mainLeftSideBar = new DockSideBar();
-        mainLeftSideBar.getItems().add(sceneGraph);
+        mainLeftSideBar.getItems().add(Dockable.of(sceneGraph));
 
         mainBorderPane.setLeft(mainLeftSideBar);
         mainLeftSideBar.setOrientation(Orientation.VERTICAL);
@@ -189,10 +190,17 @@ public class JFXEditorPanel extends JFXPanel {
     private Node getSoureSceneGraph() {
         //this.repaint();
         //this.revalidate();
-        Node retval = null;
+        Util.out("JFXEditorPanel getSoureSceneGraph");
+        //Node retval = null;
+        Node retval = new StackPane();
+        retval.setStyle("-fx-background-color: gray; -fx-border-width: 2; -fx-border-color: red;");
+        DockRegistry.makeDockLayout(retval);
+        if ( true ) return retval ;
+        
         FileObject fo = null;
         Collection<? extends FileObject> foCollection = getLookup().lookupAll(FileObject.class);
         for (FileObject o : foCollection) {
+            Util.out("JFXEditorPanel getSoureSceneGraph o = " + o);
             if ("java".equals(o.getExt())) {
                 fo = o;
                 break;
@@ -205,6 +213,7 @@ public class JFXEditorPanel extends JFXPanel {
             //Class clazz = FxClassPathUtils.loadClass("fx.Sample01", fo);
             //Class clazz = FxClassPathUtils.findClass("fx.Sample01");
             Class clazz = FxClassPathUtils.loadClass("fx.Sample01", fo);
+            
 //            clazz = FxClassPathUtils.loadClass("fx.Sample01", fo);
             
             retval = (Node) clazz.newInstance();

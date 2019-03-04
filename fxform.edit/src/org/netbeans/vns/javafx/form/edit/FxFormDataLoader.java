@@ -10,8 +10,8 @@ import org.openide.loaders.MultiDataObject;
 import org.openide.loaders.MultiFileLoader;
 import org.openide.util.Lookup;
 
-/** Loader for Forms. Recognizes file with extension .form and .java and with extension class if
- * there is their source and form file.
+/** Loader for Forms. Recognizes file with extension {@code  .fxform} and {@code .java}
+ * and with extension class if there is their source and form file.
  *
  * @author Ian Formanek
  */

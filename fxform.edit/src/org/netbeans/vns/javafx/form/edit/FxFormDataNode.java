@@ -5,13 +5,9 @@
  */
 package org.netbeans.vns.javafx.form.edit;
 
-/**
- *
- * @author Valery
- */
+
 import javax.swing.Action;
 import org.netbeans.api.annotations.common.StaticResource;
-import org.netbeans.api.editor.guards.GuardedSectionManager;
 import org.netbeans.api.java.loaders.JavaDataSupport;
 import org.openide.actions.EditAction;
 import org.openide.actions.OpenAction;
@@ -21,8 +17,8 @@ import org.openide.nodes.Node;
 
 import org.openide.util.actions.SystemAction;
 
-/** The DataNode for Forms.
- *
+/** 
+ * The DataNode for Forms.
  * @author Ian Formanek
  */
 public class FxFormDataNode extends FilterNode {
@@ -40,6 +36,7 @@ public class FxFormDataNode extends FilterNode {
     public FxFormDataNode(FxFormDataObject fdo) {
         this(JavaDataSupport.createJavaNode(fdo.getPrimaryFile()));
         Util.out("FxFormDataNode CONSTR fdo=" + fdo);
+        Util.out("FxFormDataNode CONSTR fdo.getPrimaryFile = " + fdo.getPrimaryFile());
         //GuardedSectionManager gg;
     }
     

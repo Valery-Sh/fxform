@@ -103,7 +103,7 @@ public class FxClassPathUtils {
 
     /**
      * @return ClassLoadingType if the class should be loaded in a special way,
-     *         or null to do default loading (from project classpath)
+     *         or null to do default loading (from project {@code classpath} )
      */
     static ClassLoadingType getClassLoadingType(String className) {
         int i = className.lastIndexOf("[L"); // NOI18N
@@ -118,7 +118,8 @@ public class FxClassPathUtils {
         return null;
     }
 
-    /** Loads class from classpath described by ClassSource object.
+    /** 
+     * Loads class from {@code classpath} described by ClassSource object.
      * @return loaded class, null if class name in ClassSource is null
      */
 /*    public static Class loadClass(ClassSource classSource)

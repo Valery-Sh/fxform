@@ -53,7 +53,7 @@ public class JFXPalettePanel extends JFXPanel {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                Util.out("FxFormVisualElement Platform.runLater");
+                Util.out("JFXPalettePanel Platform.runLater");
                 initFX();
                 Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
                 Dockable.initDefaultStylesheet(null);
@@ -69,7 +69,7 @@ public class JFXPalettePanel extends JFXPanel {
         Util.out(" --- initFX");
         scene = createScene();
         setScene(scene);
-        DockRegistry.register(scene.getWindow());
+        //DockRegistry.register(scene.getWindow());
     }
 
     private Scene createScene() {
@@ -82,7 +82,8 @@ public class JFXPalettePanel extends JFXPanel {
         formNode.setStyle("-fx-background-color: green;");
 
         DockNode sceneGraph = new DockNode("PALETTE Node hierarchy");
-        Button sgBtn1 = new Button("PALETTE Scene Grah Btn");
+        Button sgBtn1 = new Button("PALETTE Scene Graph Btn");
+        DockRegistry.makeDockable(sgBtn1);
         formNode.getProperties().put("PALETTE fxdocking:dockable:scene", scene);
         formNode.setContent(sgBtn1);
         mainBorderPane.setCenter(formNode);

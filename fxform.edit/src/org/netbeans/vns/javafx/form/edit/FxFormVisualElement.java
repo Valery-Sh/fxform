@@ -63,7 +63,9 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
     private final JFXPanel jfxRootPanel;
 
     public FxFormVisualElement(Lookup lookup) {
+        Util.out("FxFormVisualElement =============================== " + this);
         formDataObject = lookup.lookup(FxFormDataObject.class);
+        Util.out("   --- formDataObject = " + formDataObject);
         assert formDataObject != null;
         //FileObject dfo = formDataObject.getPrimaryFile().getParent().getFileObject("Sanple01_design.java");
         File f = new File("D:\\JavaFX-Tests\\JavaApplication5\\src\\javaapplication5\\Sanple01_design.java");
@@ -132,7 +134,7 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(0, 0, 0));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMinimumSize(new java.awt.Dimension(10, 10));
         setLayout(new java.awt.BorderLayout());
@@ -197,6 +199,16 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
         Util.out("=== componentOpened");
         WindowManager wm = WindowManager.getDefault();
         Frame fr = wm.getMainWindow();
+        TopComponent tp = WindowManager.getDefault().findTopComponent("FXPaletteTopComponent");
+        Util.out("   --- 1. tp = " + tp);
+        Util.out("   --- 2. tp = " + tp);
+        WindowManager.getDefault().findMode(tp).dockInto(tp);
+        //tp = new FXPaletteTopComponent();
+        if ( tp.isOpened() ) {
+            Util.out("   --- 3. tp not opened");
+            tp.open();
+        }
+
     }
 
     @Override
@@ -207,6 +219,7 @@ public final class FxFormVisualElement extends TopComponent implements MultiView
     @Override
     public void componentShowing() {
         Util.out("=== componentShowing ");
+
         List<Tree> list = new ArrayList<>();
         if (!isAncestorOf(jTopPanel)) {
             DataEditorSupport des = getLookup().lookup(DataEditorSupport.class);

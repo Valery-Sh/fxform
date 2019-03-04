@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import org.netbeans.api.java.classpath.ClassPath;
-import org.netbeans.modules.editor.NbEditorUtilities;
 
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
@@ -24,9 +23,9 @@ import org.openide.modules.ModuleInfo;
 import org.openide.util.Lookup;
 
 /**
- * A class loader loading user classes from given project (execution classpath
+ * A class loader loading user classes from given project (execution {@literal classpath}
  * is used) with special care given to resources. When finding a resource, the
- * the project's sources are tried first (before execution classpath) to allow
+ * the project's sources are tried first (before execution {@literal classpath) to allow
  * components added to a form in this project to access resources without need
  * to build the project first. Even if built, the resources in sources take
  * precedence as they are likely more up-to-date.

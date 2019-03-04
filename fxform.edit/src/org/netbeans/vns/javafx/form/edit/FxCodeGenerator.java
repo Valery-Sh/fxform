@@ -31,8 +31,8 @@ import org.netbeans.api.java.source.JavaSource;
 import org.netbeans.api.java.source.ModificationResult;
 import org.netbeans.api.java.source.TreeMaker;
 import org.netbeans.api.java.source.WorkingCopy;
-import org.netbeans.vns.javafx.demo.design.code.DockPaneCodeGenerator;
-import org.netbeans.vns.javafx.demo.design.code.DockUndockCodeGenerator;
+import org.netbeans.vns.javafx.form.edit.design.code.DockPaneCodeGenerator;
+import org.netbeans.vns.javafx.form.edit.design.code.DockUndockCodeGenerator;
 import org.openide.filesystems.FileObject;
 import org.openide.util.Exceptions;
 

@@ -7,7 +7,7 @@ import java.util.Enumeration;
 import org.openide.ErrorManager;
 
 /**
- * A special (@code classLoader} capable to reload a specified class/
+ * A special (@code classLoader} capable to reload a specified class.
  *
  * @author Valery Shyshkin
  */
